@@ -30,7 +30,7 @@
                     var code = document.createElement("img");
                     code.id = "img" + c;
                     document.body.appendChild(code);
-                    JsBarcode("#img" + c, c, { format: "EAN" });
+                    JsBarcode(code, c, { format: "EAN" });
                 });
             }
         });
