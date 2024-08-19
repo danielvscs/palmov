@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-2.1.0.min.js"
-        integrity="sha256-8oQ1OnzE2X9v4gpRVRMb1DWHoPHJilbur1LP9ykQ9H0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 
     <script src="https://github.com/lindell/JsBarcode/releases/download/1.2/JsBarcode.all.min.js"></script>
     <style>
@@ -20,18 +20,20 @@
 </head>
 
 <body>
-    <h3>Working index</h3>
+    <h3>Working index down js</h3>
     <script>
-        $.getJSON("https://raw.githubusercontent.com/danielvscs/palmov/master/barcodes.json", (res) => {
-            res.codes.forEach(c => {
-                var code = document.createElement("img");
-                code.id = "img" + c;
-                document.body.append(code);
-
-                $("#img" + c).JsBarcode(c, {format: "EAN"});
-            });
-        })
-
+       $.ajax({
+            url: "https://raw.githubusercontent.com/danielvscs/palmov/master/barcodes.json",
+            dataType: "json",
+            success: function(res) {
+                res.codes.forEach(function(c) {
+                    var code = document.createElement("img");
+                    code.id = "img" + c;
+                    document.body.appendChild(code);
+                    JsBarcode("#img" + c, c, { format: "EAN" });
+                });
+            }
+        });
 
     </script>
 
