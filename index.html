@@ -3,11 +3,8 @@
 
 <head>
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-
-    <script src="https://github.com/lindell/JsBarcode/releases/download/1.2/JsBarcode.all.min.js"></script>
-    <style>
+    
+   <style>
         img {
             display: block;
             margin-bottom: 50px;
@@ -17,20 +14,18 @@
 </head>
 
 <body>
-    <h3>Working index js v3</h3>
     <script>
-       $.ajax({
-            url: "https://raw.githubusercontent.com/danielvscs/palmov/master/barcodes.json",
-            dataType: "json",
-            success: function(res) {
-                res.codes.forEach(function(c) {
-                    var code = document.createElement("img");
-                    code.id = "img" + c;
-                    document.body.appendChild(code);
-                    JsBarcode(code, c, { format: "EAN" });
-                });
-            }
-        });
+       
+    var codes = [
+        "7503019790052",
+        "7502261266216"
+    ];
+
+    for(code of codes){
+        var img = document.createElement("img");
+        img.src = "https://barcodeapi.org/api/13/"+code
+        document.body.append(img)
+    }
 
     </script>
 
